@@ -6,8 +6,11 @@ class Events extends CI_Controller {
 	public function register()
 	{
 		$this->load->helper('url');
+		$this->load->database();
 
-		return $this->load->view('events/register');
+		$this->db->select('eventcode, eventname');
+
+		return $this->load->view('events/register', array("events" => $this->db->get('events')));
 	}
 
 	public function enroll()
@@ -22,7 +25,7 @@ class Events extends CI_Controller {
 		$phone = $this->input->post('phone', TRUE);
 		$event = $this->input->post('event', TRUE);
 
-		$data = array('name' => $name, 'email' => $email, 'phone' => $phone, 'event' => $event);
+		$data = array('name' => $name, 'email' => $email, 'phone' => $phone, 'event' => $event, 'timestamp' => time());
 		$str = $this->db->insert('users', $data);
 		$userid = $this->db->insert_id();
 
