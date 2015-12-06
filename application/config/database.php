@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => getenv ("OPENSHIFT_MYSQL_DB_HOST") ? getenv ("OPENSHIFT_MYSQL_DB_HOST") : 'localhost',
+	'username' => getenv ("OPENSHIFT_MYSQL_DB_USERNAME") ? getenv ("OPENSHIFT_MYSQL_DB_USERNAME") : 'root',
+	'password' => getenv ("OPENSHIFT_MYSQL_DB_PASSWORD") ? getenv ("OPENSHIFT_MYSQL_DB_PASSWORD") : '',
 	'database' => 'reverb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

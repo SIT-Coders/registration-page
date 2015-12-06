@@ -17,9 +17,9 @@
 	   <br>
 	   Event:<br>
 	   <select name="event">
-	     <option value="gaming">Gaming</option>
-	     <option value="quiz">Quiz</option>
-	     <option value="compition">Compitition</option>
+	   <?php foreach($events->result() as $event): ?>
+	     <option value="<?=$event->eventcode?>"><?=$event->eventname?></option>
+	   <?php endforeach; ?>
 	   </select>
 	   <br><br>
 	   <input type="submit" value="Submit">
