@@ -3,3 +3,4 @@ php:
   - 5.5
 services:
   - mysql
+script: php index.php
